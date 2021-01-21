@@ -4,7 +4,19 @@ import './index.css';
 //import App from './jsx/App';
 //import App from './rendering-elements/App.jsx';
 //import App from './components/App';
-import App from './state/App';
+//import App from './state/App';
+// import App from './HandleEvent/App';
+// import App from './ConditionalRender/App';
+// import App from './List/App';
+// import App from './Forms/App';
+// import App from './LiftStateUp/App';
+import App from './CompositionVsInheritance/App';
+
+
+
+
+
+
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
