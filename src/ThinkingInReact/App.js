@@ -68,26 +68,96 @@ class FilterableProductTable extends React.Component{
             searchItem:'',
             stockCare:false,
         }
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleCheckoutChange = this.handleCheckoutChange.bind(this);
+        this.searchResult=[];
+
+    }
+    handleInputChange(e){
+            console.log(e);
+            this.setState({searchItem:e});   
+    }
+    handleCheckoutChange(e){
+        console.log(e);
+        this.setState({stockCare:e}); 
     }
 
+    computeSearchResult(){
+        let result={};
+        if(this.state.stockCare){
+            result = PRODUCTS.filter(p=>p.stocked).filter(i=>i.name.includes(this.state.searchItem))
+        }else{
+            result= PRODUCTS.filter(i=>i.name.includes(this.state.searchItem));
+        }
+        return result;
+    }
 
     render(){
+        this.searchResult = this.computeSearchResult();
         return (
             <div className="filterableProductTable">
-                <SearchBar/>
-                <ProductTable products={PRODUCTS}/>
+                <SearchBar 
+                searchItem={this.state.searchItem}
+                stockCare={this.state.stockCare} 
+                inputChange={this.handleInputChange}
+                checkoutChange={this.handleCheckoutChange}
+                 />
+                <ProductTable products={this.searchResult}/>
             </div>
         )
     }
 }
+/**Step5:Add Inverse Data Flow
+ * Now it's time to support data flowing the other way:the form components
+ * deep in the hierarchy need to update the state in FilterableProductTable
+ * 
+ * We want to make sure that whenever the user changes the form,we update
+ * the state to reflect the user input.Since components should only update
+ * their own state,FilterableProductTable will pass callbacks to SearchBar
+ * that will fire whenever the state should be updated.
+ */
+
+ /** And That's It
+  * While it may be a little more typing than you're used to,remember that code is read far more than
+  * it's written,and it's less difficult to read this modular,explicit code,As you start to build large
+  * libraries of components,you'll appreciate this explicitness and modularity,and with code reuse,your
+  * lines of code will start to shrink.:)
+  */
 class SearchBar extends React.Component{
+    constructor(props){
+        super(props);
+        // this.state={item:'',stock:false}
+         this.handleInput= this.handleInput.bind(this);
+         this.handleCheckOut= this.handleCheckOut.bind(this);
+
+    }
+    handleInput(e){
+      //  this.setState({item:e.target.value});
+       // this.props.inputChange(this.state.item);
+       this.props.inputChange(e.target.value);
+    }
+    handleCheckOut(e){
+      //  this.setState(state=>({stock:!state.stock}));
+      //  this.props.checkoutChange(this.state.stock);
+      this.props.checkoutChange(e.target.checked);
+    }
 
     render(){
+        const checkout = this.props.stockCare;
         return (
             <div className="searchBar">
-                <input type="text" name="searchItem" />
+                <input type="text" 
+                value={this.props.searchItem} 
+                onChange={this.handleInput}
+                 name="searchItem" />
                 <br/>
-                <input type="checkbox"/><span>Only show products in stocks</span>
+                {checkout? <input type="checkbox" checked             
+                onChange={this.handleCheckOut}/> 
+                :<input type="checkbox"                
+                onChange={this.handleCheckOut}/> 
+                 }
+
+                <span>Only show products in stocks</span>
             </div>
         );
     }
