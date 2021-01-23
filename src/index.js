@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './ThinkingInReact/main.css';
 //import App from './jsx/App';
 //import App from './rendering-elements/App.jsx';
 //import App from './components/App';
@@ -10,7 +11,8 @@ import './index.css';
 // import App from './List/App';
 // import App from './Forms/App';
 // import App from './LiftStateUp/App';
-import App from './CompositionVsInheritance/App';
+// import App from './CompositionVsInheritance/App';
+import App from './ThinkingInReact/App';
 
 
 
