@@ -12,7 +12,7 @@ import './ThinkingInReact/main.css';
 // import App from './Forms/App';
 // import App from './LiftStateUp/App';
 // import App from './CompositionVsInheritance/App';
-import App from './ThinkingInReact/App';
+import App from './MainFlow/ThinkingInReact/App';
 
 
 
