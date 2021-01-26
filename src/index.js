@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './ThinkingInReact/main.css';
+//import './ThinkingInReact/main.css';
 //import App from './jsx/App';
 //import App from './rendering-elements/App.jsx';
 //import App from './components/App';
@@ -12,7 +12,18 @@ import './ThinkingInReact/main.css';
 // import App from './Forms/App';
 // import App from './LiftStateUp/App';
 // import App from './CompositionVsInheritance/App';
-import App from './MainFlow/ThinkingInReact/App';
+// import App from './MainFlow/ThinkingInReact/App';
+// import App from './Advance/Accessibility/App';
+
+// import App from './Advance/CodeSplitting/App';
+// import App from './Advance/CodeSplitting/App2';
+// import App from './Advance/Context/App_context';
+// import App from './Advance/Context/App';
+import App from './Advance/Context/updatingContextFromNestedCom/App';
+
+
+
+
 
 
 
